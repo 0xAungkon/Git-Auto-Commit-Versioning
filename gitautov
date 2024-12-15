@@ -62,12 +62,12 @@ def do_push():
     subprocess.run(['git', 'status'])
 
     # Commit the changes with the constructed commit message
-    subprocess.run(['git', 'commit', '-m', commit_msg])
-
-    # Push the committed changes to the remote repository
-    # subprocess.run(['git', 'push'])
-    result = subprocess.run(['git', 'push'], capture_output=True, text=True)
+    # subprocess.run(['git', 'commit', '-m', commit_msg])
+    result = subprocess.run(['git', 'commit', '-m', commit_msg], capture_output=True, text=True)
     print(result)
+    
+    # Push the committed changes to the remote repository
+    subprocess.run(['git', 'push'])
     # Print the final commit message
     print('\n\nCommit Message: ' + commit_msg)
 
