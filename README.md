@@ -1,4 +1,4 @@
-# Git Versioning Script
+# Git Auto Commit Versioning
 
 This Python script automates the process of calculating the next version number based on the last commit message, appending it to a new commit message, and performing a Git commit and push.
 
