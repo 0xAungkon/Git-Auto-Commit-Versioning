@@ -39,3 +39,4 @@ version=return_next_version()
 commit_msg=version+' - '+commit_msg
 subprocess.run(['git', 'add', '.'])
 subprocess.run(['git', 'commit', '-m', commit_msg])
+print(commit_msg)
