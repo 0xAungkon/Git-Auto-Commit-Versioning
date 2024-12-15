@@ -21,11 +21,8 @@ def return_next_version():
         version=0.0
 
     version=str(version)
-    try:
-        is_asked_for_next_v=sys.argv[1]
-    except:
-        is_asked_for_next_v=False
-    if(is_asked_for_next_v=='-rel'):
+    
+    if('-rel' in sys.argv):
         version_pre=int(version.split('.')[0])+1
         version_post=int(version.split('.')[1])
     else:
