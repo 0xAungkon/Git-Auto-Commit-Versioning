@@ -38,5 +38,8 @@ commit_msg=input('Enter Commit Message: ')
 version=return_next_version()
 commit_msg=version+' - '+commit_msg
 subprocess.run(['git', 'add', '.'])
+subprocess.run(['git', 'status'])
 subprocess.run(['git', 'commit', '-m', commit_msg])
-print(commit_msg)
+subprocess.run(['git', 'push'])
+
+print('\n\nCommit Message: '+commit_msg)
