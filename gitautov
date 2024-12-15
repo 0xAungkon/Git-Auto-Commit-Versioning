@@ -8,7 +8,7 @@ def return_next_version():
     # Run git log command to get the last commit message
     result = subprocess.run(['git', 'log', '-1', '--pretty=%B'], capture_output=True, text=True)
     last_commit_message = result.stdout.strip()
-
+    print('Last Commit Message: '+last_commit_message)
     # Extract version from the commit message if it contains a version pattern
     if ('-' in last_commit_message):
         version = last_commit_message.split('-')[0]  # Extract the part before the dash
@@ -44,16 +44,17 @@ def return_next_version():
 
 def do_push():
     # Check if the "-m" flag is provided in the arguments for the commit message
+    version = return_next_version()
+
     if '-m' in sys.argv:
         commit_msg = sys.argv[sys.argv.index('-m') + 1]    # Get the commit message from the arguments
     else:
         commit_msg = input('Enter Commit Message: ')      # Prompt the user for the commit message
 
     # Calculate the next version number
-    version = return_next_version()
-
+    
     # Append the version number to the commit message
-    commit_msg = version['next_version'] + ' - ' + commit_msg
+    commit_msg = 'v'+version['next_version'] + ' - ' + commit_msg
 
     # Stage all changes for commit
     subprocess.run(['git', 'add', '.'])
