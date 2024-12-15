@@ -75,7 +75,7 @@ def do_push():
     if(new_version):
         print('\n\nCommit Message: ' + commit_msg)
     else:
-        print('No New Update, Last Commit: '+ version['last_commit_message'])
+        print('\n\nNo New Update, Last Commit: '+ version['last_commit_message'])
 
 
 if sys.argv[0]=='':
