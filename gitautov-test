@@ -1,4 +1,0 @@
-import sys
-    print("Running from the Python interpreter")
-else:
-    print("Running from a Python file")
