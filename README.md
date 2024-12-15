@@ -23,7 +23,7 @@ To run the script, use the following command:
 
 ### Examples
 ```bash
-./gitautov -rel -m 'Test4' # Release Push
-./gitautov -m 'Test4' # Regular Push
+./gitautov -rel -m 'Test4' # Release Push v1.7 > v2.0
+./gitautov -m 'Test4' # Regular Push  v1.1 > v1.2
 ```
 
