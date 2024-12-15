@@ -49,7 +49,11 @@ def do_push():
     if '-m' in sys.argv:
         commit_msg = sys.argv[sys.argv.index('-m') + 1]    # Get the commit message from the arguments
     else:
-        commit_msg = input('Enter Commit Message: ')      # Prompt the user for the commit message
+        try:
+            commit_msg = input('Enter Commit Message: ')      # Prompt the user for the commit message
+        except KeyboardInterrupt:
+            print('\nProcess Cancel. Bye ! See You Next Time .')
+            sys.exit(0)
 
     # Calculate the next version number
     
