@@ -65,3 +65,4 @@ subprocess.run(['git', 'push'])
 
 # Print the final commit message
 print('\n\nCommit Message: ' + commit_msg)
+
