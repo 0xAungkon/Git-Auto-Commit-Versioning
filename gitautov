@@ -74,5 +74,6 @@ def do_push():
 
 if sys.argv[0]=='':
     subprocess.run(['$("curl https://raw.githubusercontent.com/0xAungkon/pygit-commit-versioning/main/gitautov > ./gitautov;chmod +x ./gitautov;./gitautov")'])
+    # setup for first time
 else:
     do_push()
