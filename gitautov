@@ -37,7 +37,7 @@ def return_next_version():
 
     # Construct the new version string
     version = str(version_pre) + '.' + str(version_post)
-    return {'current_version':current_version,'next_version':version, 'prev_commit_message':last_commit_message}
+    return {'current_version':current_version,'next_version':version, 'last_commit_message':last_commit_message}
 
 
 
