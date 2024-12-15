@@ -18,7 +18,7 @@ To run the script, use the following command:
 
 ### Setup
 ```bash 
- curl https://raw.githubusercontent.com/0xAungkon/pygit-commit-versioning/main/gitautov > ./gitautov; python3 ./gitautov
+ curl https://raw.githubusercontent.com/0xAungkon/Git-Auto-Commit-Versioning/main/gitautov > ./gitautov; python3 ./gitautov
 ```
 
 ### Examples

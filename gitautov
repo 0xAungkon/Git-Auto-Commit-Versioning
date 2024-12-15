@@ -1,5 +1,14 @@
 #!/usr/bin/env python3
 
+
+#
+#
+#   The Script Installed By `curl https://raw.githubusercontent.com/0xAungkon/Git-Auto-Commit-Versioning/main/gitautov > ./gitautov; python3 ./gitautov`
+#   Source: https://github.com/0xAungkon/Git-Auto-Commit-Versioning
+#   Author: 0xAungkon ( Google Me XD )
+#
+#
+
 import subprocess
 import sys
 
@@ -84,7 +93,11 @@ def do_push():
 
 
 if sys.argv[0]=='':
-    subprocess.run(['$("curl https://raw.githubusercontent.com/0xAungkon/pygit-commit-versioning/main/gitautov > ./gitautov;chmod +x ./gitautov;./gitautov")'])
+    subprocess.run(['$("curl https://raw.githubusercontent.com/0xAungkon/Git-Auto-Commit-Versioning/main/gitautov > ./gitautov;chmod +x ./gitautov;./gitautov")'])
     # setup for first time
 else:
     do_push()
+
+
+# Bye , Take Care . Thank You So Much For Contribution
+# Contributor: 0xAungkon, Waiting........
