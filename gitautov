@@ -17,7 +17,7 @@ def return_next_version():
         version = '0.0'                             # Default version if none found
 
     version = version.strip()                       # Clean up any extra whitespace
-
+    current_version=version
     # Convert the extracted version to a float
     try:
         version = float(version)
@@ -37,7 +37,7 @@ def return_next_version():
 
     # Construct the new version string
     version = str(version_pre) + '.' + str(version_post)
-    return version
+    return {'current_version':current_version,'next_version':version}
 
 
 
@@ -53,7 +53,7 @@ def do_push():
     version = return_next_version()
 
     # Append the version number to the commit message
-    commit_msg = version + ' - ' + commit_msg
+    commit_msg = version['next_version'] + ' - ' + commit_msg
 
     # Stage all changes for commit
     subprocess.run(['git', 'add', '.'])
@@ -65,14 +65,17 @@ def do_push():
     # subprocess.run(['git', 'commit', '-m', commit_msg])
     result = subprocess.run(['git', 'commit', '-m', commit_msg], capture_output=True, text=True)
     
+    new_version=True
     if('nothing to commit, working tree clean' in result.stdout):
-        print('hlw')
+        new_version=False
     
     # Push the committed changes to the remote repository
     subprocess.run(['git', 'push'])
     # Print the final commit message
-    print('\n\nCommit Message: ' + commit_msg)
-
+    if(new_version):
+        print('\n\nCommit Message: ' + commit_msg)
+    else:
+        print('No New Update')
 
 
 if sys.argv[0]=='':
