@@ -39,30 +39,40 @@ def return_next_version():
     version = str(version_pre) + '.' + str(version_post)
     return version
 
-# Check if the "-m" flag is provided in the arguments for the commit message
-if '-m' in sys.argv:
-    commit_msg = sys.argv[sys.argv.index('-m') + 1]    # Get the commit message from the arguments
+
+
+
+def do_push():
+    # Check if the "-m" flag is provided in the arguments for the commit message
+    if '-m' in sys.argv:
+        commit_msg = sys.argv[sys.argv.index('-m') + 1]    # Get the commit message from the arguments
+    else:
+        commit_msg = input('Enter Commit Message: ')      # Prompt the user for the commit message
+
+    # Calculate the next version number
+    version = return_next_version()
+
+    # Append the version number to the commit message
+    commit_msg = version + ' - ' + commit_msg
+
+    # Stage all changes for commit
+    subprocess.run(['git', 'add', '.'])
+
+    # Show the git status
+    subprocess.run(['git', 'status'])
+
+    # Commit the changes with the constructed commit message
+    subprocess.run(['git', 'commit', '-m', commit_msg])
+
+    # Push the committed changes to the remote repository
+    subprocess.run(['git', 'push'])
+
+    # Print the final commit message
+    print('\n\nCommit Message: ' + commit_msg)
+
+
+
+if sys.argv[0]=='':
+    subprocess.run(['$("curl https://raw.githubusercontent.com/0xAungkon/pygit-commit-versioning/main/gitautov > ./gitautov;chmod +x ./gitautov;./gitautov")'])
 else:
-    commit_msg = input('Enter Commit Message: ')      # Prompt the user for the commit message
-
-# Calculate the next version number
-version = return_next_version()
-
-# Append the version number to the commit message
-commit_msg = version + ' - ' + commit_msg
-
-# Stage all changes for commit
-subprocess.run(['git', 'add', '.'])
-
-# Show the git status
-subprocess.run(['git', 'status'])
-
-# Commit the changes with the constructed commit message
-subprocess.run(['git', 'commit', '-m', commit_msg])
-
-# Push the committed changes to the remote repository
-subprocess.run(['git', 'push'])
-
-# Print the final commit message
-print('\n\nCommit Message: ' + commit_msg)
-
+    do_push()

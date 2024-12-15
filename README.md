@@ -16,6 +16,12 @@ This Python script automates the process of calculating the next version number 
 ### Running the script
 To run the script, use the following command:
 
+### Setup
+```bash 
+ curl https://raw.githubusercontent.com/0xAungkon/pygit-commit-versioning/main/gitautov > ./gitautov; python3 ./gitautov
+```
+
+### Examples
 ```bash
 ./gitautov -rel -m 'Test4' # Release Push
 ./gitautov -m 'Test4' # Regular Push
