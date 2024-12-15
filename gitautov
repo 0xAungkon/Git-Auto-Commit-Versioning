@@ -2,13 +2,14 @@
 
 import subprocess
 import sys
+import os
 
 # Function to calculate the next version number based on the last commit message.
 def return_next_version():
     # Run git log command to get the last commit message
     result = subprocess.run(['git', 'log', '-1', '--pretty=%B'], capture_output=True, text=True)
     last_commit_message = result.stdout.strip()
-
+    print('Last Commit Message: '+last_commit_message)
     # Extract version from the commit message if it contains a version pattern
     if ('-' in last_commit_message):
         version = last_commit_message.split('-')[0]  # Extract the part before the dash
@@ -75,10 +76,12 @@ def do_push():
     if(new_version):
         print('\n\nCommit Message: ' + commit_msg)
     else:
-        print('\n\nNo New Update, Last Commit: '+ version['last_commit_message'])
+        print('\n\nNo New Update')
 
 
-if sys.argv[0]=='':
+# if sys.argv[0]=='':
+    
+if not os.path.exists("./gitautov"):
     subprocess.run(['$("curl https://raw.githubusercontent.com/0xAungkon/pygit-commit-versioning/main/gitautov > ./gitautov;chmod +x ./gitautov;./gitautov")'])
     # setup for first time
 else:
