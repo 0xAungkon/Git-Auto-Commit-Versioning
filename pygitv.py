@@ -24,14 +24,20 @@ def return_next_version():
     
     if('-rel' in sys.argv):
         version_pre=int(version.split('.')[0])+1
-        version_post=int(version.split('.')[1])
+        version_post=int(0)
     else:
         version_pre=int(version.split('.')[0])
         version_post=int(version.split('.')[1])+1
     version=str(version_pre)+'.'+str(version_post)
     return version
 
-commit_msg=input('Enter Commit Message: ')
+if '-m' in sys.argv:
+    commit_msg=sys.argv[sys.argv.index('-m')+1]
+else:
+    commit_msg=input('Enter Commit Message: ')
+
+
+
 version=return_next_version()
 commit_msg=version+' - '+commit_msg
 subprocess.run(['git', 'add', '.'])
