@@ -40,7 +40,7 @@ def return_next_version():
     new_version=check_and_update(version)
     
     # Determine the next version based on the presence of "-rel" in the arguments
-    if ('-rel' in sys.argv or new_version):
+    if ('-rel' in sys.argv or '-r' in sys.argv or new_version):
         version_pre = int(version.split('.')[0]) + 1  # Increment the major version
         version_post = int(0)                        # Reset the minor version
     else:
@@ -55,6 +55,11 @@ def return_next_version():
 
 
 def do_push():
+    subprocess.run(['git', 'add', '.'])
+
+    # Show the git status
+    subprocess.run(['git', 'status'])
+    
     # Check if the "-m" flag is provided in the arguments for the commit message
     version = return_next_version()
 
@@ -69,10 +74,7 @@ def do_push():
     commit_msg = 'v'+version['next_version'] + ' - ' + commit_msg
 
     # Stage all changes for commit
-    subprocess.run(['git', 'add', '.'])
-
-    # Show the git status
-    subprocess.run(['git', 'status'])
+    
 
     # Commit the changes with the constructed commit message
     # subprocess.run(['git', 'commit', '-m', commit_msg])
